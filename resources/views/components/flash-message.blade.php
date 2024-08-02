@@ -7,7 +7,7 @@ if(session('status') === 'alert'){$bgcolor = 'bg-red-300';}
 
 
 @if(session('message'))
-  <div class="{{$bgcolor}} w-1/2 mx-auto p-2 text-white">
+  <div class="{{$bgcolor}} w-1/2 mx-auto p-2 my-4 text-white">
     {{session('message')}}
   </div>
 @endif

@@ -34,17 +34,16 @@
                                 <td class="md:px-4 py-3">{{$owner->email}}</td>
                                 <td class="md:px-4 py-3">{{$owner->created_at->diffForHumans()}}</td>
                                 <td class="md:px-4 py-3">
-                                    <button onclick="location.href='{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}'" type="button" class="text-white bg-indigo-400 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-500 rounded text-lg">編集</button>
+                                    <button  onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'" type="button" class="text-white bg-indigo-400 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-500 rounded text-lg">編集</button>
                                 </td>
 
-                                
-                                <td class="md:px-4 py-3">
                                     <form id="delete_{{$owner->id}}" method="post" action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}" style="display:inline;">
                                         @csrf
                                         @method('delete')
-                                        <button type="button" data-id="{{ $owner->id }}" onclick="deletePost(this)" class="text-white bg-red-400 border-0 py-2 px-4 focus:outline-none hover:bg-red-500 rounded text-lg">削除</button>
+                                        <td class="md:px-4 py-3">
+                                        <a href="#" data-id="{{ $owner->id }}" onclick="deletePost(this)" class="text-white bg-red-400 border-0 py-2 px-4 focus:outline-none hover:bg-red-500 rounded text-lg">削除</a>
+                                        </td>
                                     </form>
-                                </td>
                             </tr>
                             </tr>
                             @endforeach
