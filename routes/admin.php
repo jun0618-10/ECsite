@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\OwnersController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,13 +23,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.welcome');
-});
+// Route::get('/', function () {
+//     return view('admin.welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin'])->name('dashboard');
+
+Route::resource('owners', OwnersController::class)
+    ->middleware('auth:admin')->except(['show']);
+
+
+//下記のコードの意味を聞く
+    Route::prefix('expired-owners')->
+    middleware('auth:admin')->group(function(){
+    Route::get('index', [OwnersController::class,
+    'expiredOwnerIndex'])->name('expired-owners.index');
+    Route::post('destroy/{owner}',
+    [OwnersController::class, 'expiredOwnerDestroy'])
+    ->name('expired-owners.destroy');
+    });
 
 
 //URLとcontrollerのマッピング　一番右に記載したメソッドを呼び出し

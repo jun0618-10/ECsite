@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ja_JP',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'ja_JP',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+
+        
 
         /*
          * Application Service Providers...
@@ -229,7 +231,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Constant' => App\Constants\Common::class,
     ],
 
 ];
